@@ -2,22 +2,24 @@
 <%- include("header") -%>
 
   <div class="box" id="heading">
-    <h1><%=day%></h1>
+    <h1><%=listName%></h1>
   </div>
 
   <div class="box">
 
-    <% for(var i = 0 ; i < newItems.length;i++){ %>
-    <div class="item">
-      <input type="checkbox" name="" value="">
-      <p><%= newItems[i] %></p>
-    </div>
-
-    <% } %>
+    <% newItems.forEach(function(i){ %>
+      <form action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" name="checkBox" value="<%= i._id %>"  onChange="this.form.submit()" >
+          <p><%= i.name %></p>
+          <input type="hidden" name="listNametoDlt" value="<%= listName %>" >
+        </div>
+    </form>
+    <% }); %>
 
     <form action="/" method="post">
       <input type="text" name="newItem" placeholder="New Item">
-      <button type="submit" name="typeOfList" value=<%= day %> >+</button>
+      <button type="submit" name="typeOfList" value="<%= listName %>" >+</button>
     </form>
   </div>
 
