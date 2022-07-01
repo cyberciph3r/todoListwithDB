@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 app.set('view engine', 'ejs');
 
-mongoose.connect("mongodb+srv://admin-varun:admincipher@cluster0.vfthz.mongodb.net/todolistDB");
+mongoose.connect("mongodb+srv://<username>:<password>@cluster0.vfthz.mongodb.net/todolistDB");
 
 const itemsSchema = {
   name: String
